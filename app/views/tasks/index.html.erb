@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Tarefas</h3>
+
+<div class="row">
+  <div class="col m6">
+    <%= link_to 'New Task', new_task_path %>
+    <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <p><strong><%= task.title %></strong></p>
+        <p class="description"><%= task.project.client.name %> > <%= task.project.name %></p>
+        <p class="description"><%= task.status.name %></p>
+      </li>
+    <% end %>
+    </ul>    
+  </div>
+  <div class="col m6">
+    <p>Nenhuma tarefa iniciada neste momento</p>
+  </div>
+</div>
+
+

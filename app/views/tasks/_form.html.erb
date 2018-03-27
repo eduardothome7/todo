@@ -1,0 +1,62 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field ">
+    <%= form.label "título *" %>
+    <%= form.text_field :title, id: :task_title %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.collection_select(:status_id, Status.all, :id, :name) %>
+    <%= form.label "status *" %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.collection_select(:project_id, Project.all, :id, :name) %>
+    <%= form.label "cliente > projeto *" %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= form.label "categoria *" %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.label "descrição" %>
+    <%= form.text_area :description, id: :task_description %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.label "início em" %>
+    <%= form.text_field :start_at, id: :task_start_at, class: 'datepicker' %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.label "entrega em" %>
+    <%= form.text_field :conclusion_at, id: :task_conclusion_at, class: 'datepicker' %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.label "estimativa (minutos)" %>
+    <%= form.number_field :effort_min, id: :task_effort_min %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.label "prioridade" %>
+    <%= form.number_field :priority, id: :task_priority, value: '5' %>
+  </div>
+
+  <div class="input-field ">
+    <%= form.submit "Abrir Tarefa", class: 'btn teal' %>
+  </div>
+<% end %>
