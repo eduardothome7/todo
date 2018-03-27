@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :play, :pause]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, except: [:create, :update, :destroy]
 
   # GET /tasks
@@ -15,15 +15,28 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task       = Task.new
+    @task = Task.new
   end
 
-  def play 
-    # format.js 
-  end
+  def play_pause
+    @task = Task.find(params[:task_id])
+    
+    if @task.started?
+      new_status = 3
+    else
+      new_status = 2
+    end
 
-  def pause 
-  end 
+    if @task.update(status_id: new_status)
+      ActivityTask.create(task_id: @task.id, status_id: new_status)
+      @msg = "Tarefa #{@task.status.name} com sucesso"
+    else
+      @msg = "Erro"
+    end
+    respond_to do |format|
+      format.js 
+    end
+  end
 
   # GET /tasks/1/edit
   def edit
