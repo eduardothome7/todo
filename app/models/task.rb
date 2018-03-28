@@ -3,6 +3,7 @@ require 'date'
 class Task < ApplicationRecord
   belongs_to :project
   belongs_to :status
+  belongs_to :category
   has_many :activity_tasks
   PLAY = 2
   PAUSE = 3
@@ -21,12 +22,18 @@ class Task < ApplicationRecord
   end
 
   def get_prev_play(activity)
-    activity = ActivityTask.where('task_id = ? AND id < ?', activity.task.id, activity.id).played.last
+    activity = activity_tasks.where('id < ?', activity.id).played.last
     return activity
   end
 
+  def start_at 
+    if activity_tasks.any?
+      return activity_tasks.played.first.created_at
+    end
+  end
+
   def total_minutes
-    activities = ActivityTask.where('task_id', id).order('created_at asc')
+    activities = activity_tasks.order('created_at asc')
     mins = 0.0
     play_at = ''
 

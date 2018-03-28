@@ -10,6 +10,7 @@ $secondary-color: color("yellow", "base") !default;
     top: 0;
     width: 50%;
     height: 100%;	
+    z-index:200;
 }
 .sidebar-right {
     right: 0;
@@ -34,4 +35,8 @@ p.center {
 
 li {
     cursor: pointer;
+}
+
+.overlay-black {
+    background: rgba(0,0,0,0.85);
 }

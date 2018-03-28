@@ -21,6 +21,7 @@ $(document).ready(function(){
 			method: 'get',
             dataType: 'script'
 		});
+		// $('#main-overlay').fadeIn();
 	});
 
 });

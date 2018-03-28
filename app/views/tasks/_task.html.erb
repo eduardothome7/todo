@@ -1,68 +1,58 @@
 
-<p>
-  <strong>Status:</strong>
-  <%= task.status_id %>
-</p>
+<h4><%= task.title.titleize %></h4>
 
-<p>
-  <strong>Project:</strong>
-  <%= task.project_id %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= task.category_id %>
-</p>
-
-<p>
-  <strong>Open user:</strong>
+<!-- <p>
+  <strong>Aberta por</strong>
   <%= task.open_user_id %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Responsáve</strong>
   <%= task.user_id %>
+</p> -->
+
+<p>
+  <%= task.status.name %>
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= task.title %>
+  <%= task.project.client.name %> > <%= task.project.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <%= task.category.name %>
+</p>
+
+<p>
+  <strong>Início em: </strong>
+  <%= task.start_at.strftime("%d/%m/%y as %H:%M") %>
+</p>
+
+<% if @task.conclusion_at.present? %>
+  <p>
+    <strong>Conclusão prevista: </strong>
+    <%= task.conclusion_at.strftime("%d/%m/%y as %H:%M") %>
+</p>
+<% end %>
+
+<% if @task.status_id == 4%>
+  <p>
+   <strong>Entregue em: </strong>
+    <%= task.finish_at.strftime("%d/%m/%y as %H:%M") %>
+  </p>
+<% end %>
+
+<p>
+ <strong>Esforço Estimado</strong>
+  <%= task.effort_min %> <small>min.</small>
+</p>
+
+<p>
+ <strong>Tempo trabalhado</strong>
+  <%= task.total_minutes %> <small>min.</small>
+</p>
+
+<p>
   <%= task.description %>
 </p>
 
-<p>
-  <strong>Start at:</strong>
-  <%= task.start_at %>
-</p>
-
-<p>
-  <strong>Conclusion at:</strong>
-  <%= task.conclusion_at %>
-</p>
-
-<p>
-  <strong>Finish at:</strong>
-  <%= task.finish_at %>
-</p>
-
-<p>
-  <strong>Effort min:</strong>
-  <%= task.effort_min %>
-</p>
-
-<p>
-  <strong>Worked min:</strong>
-  <%= task.worked_min %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= task.priority %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(task) %> |
-<%= link_to 'Back', tasks_path %>
