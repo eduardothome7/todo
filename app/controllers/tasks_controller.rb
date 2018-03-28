@@ -6,6 +6,8 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @task_playing = @tasks.played.last
+    @task_paused  = @tasks.paused.last
   end
 
   # GET /tasks/1

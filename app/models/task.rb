@@ -5,8 +5,14 @@ class Task < ApplicationRecord
   belongs_to :status
   belongs_to :category
   has_many :activity_tasks
-  PLAY = 2
-  PAUSE = 3
+  STARTED   = 1
+  PLAY      = 2
+  PAUSE     = 3
+  FINISHED  = 4
+  scope :started, -> { where(status_id: STARTED ) }
+  scope :played, -> { where(status_id: PLAY ) }
+  scope :paused, -> { where(status_id: PAUSE) }
+  scope :finished, -> { where(status_id: FINISHED) }
 
   def started?
     return true if status_id == PLAY

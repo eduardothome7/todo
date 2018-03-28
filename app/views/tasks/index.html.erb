@@ -24,7 +24,13 @@
 <div class="sidebar sidebar-right">
   <div class="overlay overlay-white"></div>
   <p id="msg" class="center">Nenhuma tarefa iniciada neste momento</p>
-  <div id="task_selected"></div>    
+  <div id="task_selected">
+    <% if @task_playing.present? %>
+      <%= render("tasks/task", task: @task_playing) %>
+    <% else %>
+      <%= render("tasks/task", task: @tasks.last) %>
+    <% end %>
+  </div>    
 </div>
 
 

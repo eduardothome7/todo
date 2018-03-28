@@ -1,5 +1,23 @@
-
 <h4><%= task.title.titleize %></h4>
+
+<div class="row">
+  <div class="col m2">
+    <% if task.started? %>  
+      <a data-task_id="<%= task.id %>" class="btn blue play_pause">Pause</a>
+    <% else %>
+      <a data-task_id="<%= task.id %>" class="btn teal play_pause">Play</a>
+    <% end %>
+  </div>
+  <div class="col m4">
+    <a class="btn blue">Entregar e transferir</a>
+  </div>
+  <div class="col m3">  
+    <a class="btn blue">Editar</a>
+  </div>
+  <div class="col m3">
+    <a class="btn red">Apagar</a>
+  </div>
+</div>  
 
 <!-- <p>
   <strong>Aberta por</strong>
@@ -23,19 +41,20 @@
   <%= task.category.name %>
 </p>
 
-<p>
-  <strong>Início em: </strong>
-  <%= task.start_at.strftime("%d/%m/%y as %H:%M") %>
-</p>
-
-<% if @task.conclusion_at.present? %>
+<% if task.start_at.present? %>
+  <p>
+    <strong>Início em: </strong>
+    <%= task.start_at.strftime("%d/%m/%y as %H:%M") %>
+  </p>
+<% end %>
+<% if task.conclusion_at.present? %>
   <p>
     <strong>Conclusão prevista: </strong>
     <%= task.conclusion_at.strftime("%d/%m/%y as %H:%M") %>
-</p>
+  </p>
 <% end %>
 
-<% if @task.status_id == 4%>
+<% if task.status_id == 4%>
   <p>
    <strong>Entregue em: </strong>
     <%= task.finish_at.strftime("%d/%m/%y as %H:%M") %>

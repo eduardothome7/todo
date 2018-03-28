@@ -24,4 +24,16 @@ $(document).ready(function(){
 		// $('#main-overlay').fadeIn();
 	});
 
+	$('.play_pause').click(function(){
+		var task_id = $(this).data('task_id');
+		
+		$.ajax({
+			url: '/tasks/play_pause.js',
+			data: {task_id: task_id},
+			method: 'put',
+            dataType: 'script'
+		});
+
+	});
+
 });
