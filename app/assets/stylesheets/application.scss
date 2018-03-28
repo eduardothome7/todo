@@ -2,3 +2,36 @@
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
+
+.sidebar{
+    background: #f3f3f3;
+    padding: 1pc;
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 100%;	
+}
+.sidebar-right {
+    right: 0;
+}
+
+p.center {
+	text-align: center;
+}
+
+.overlay {
+	width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+	display: none;
+}
+
+.overlay-white {
+    background: rgba(255,255,255,0.5);
+}
+
+li {
+    cursor: pointer;
+}

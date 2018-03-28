@@ -11,6 +11,13 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    def show
+      respond_to do |format|
+        format.html
+        format.json
+        format.js
+      end
+    end
   end
 
   # GET /tasks/new
@@ -27,7 +34,7 @@ class TasksController < ApplicationController
       new_status = 2
     end
 
-    if @task.update(status_id: new_status)
+    if @task.play_pause!
       ActivityTask.create(task_id: @task.id, status_id: new_status)
       @msg = "Tarefa #{@task.status.name} com sucesso"
     else

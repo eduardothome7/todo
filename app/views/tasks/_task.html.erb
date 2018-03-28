@@ -1,0 +1,68 @@
+
+<p>
+  <strong>Status:</strong>
+  <%= task.status_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= task.project_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= task.category_id %>
+</p>
+
+<p>
+  <strong>Open user:</strong>
+  <%= task.open_user_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= task.user_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= task.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= task.description %>
+</p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= task.start_at %>
+</p>
+
+<p>
+  <strong>Conclusion at:</strong>
+  <%= task.conclusion_at %>
+</p>
+
+<p>
+  <strong>Finish at:</strong>
+  <%= task.finish_at %>
+</p>
+
+<p>
+  <strong>Effort min:</strong>
+  <%= task.effort_min %>
+</p>
+
+<p>
+  <strong>Worked min:</strong>
+  <%= task.worked_min %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= task.priority %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(task) %> |
+<%= link_to 'Back', tasks_path %>
