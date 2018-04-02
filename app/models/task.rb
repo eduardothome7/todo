@@ -18,6 +18,10 @@ class Task < ApplicationRecord
     return true if status_id == PLAY
   end
 
+  def pause?
+    return true if status_id == PAUSE
+  end
+
   def play_pause!
     if status_id == PAUSE
       new_status = PLAY
