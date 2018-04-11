@@ -4,45 +4,105 @@ $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 
 .sidebar{
-    background: #f3f3f3;
+    background: #fff;
     padding: 1pc;
+    padding-top: 2.5pc;
     position: fixed;
-    top: 0;
-    width: 50%;
+    top: 65px;
+    width: 57%;
     height: 100%;	
+    border:none;
     z-index:200;
+    transition: all 1.2s ease;
 }
 .sidebar-right {
     right: 0;
+    border-left: 1px solid #c7c7c7;
 }
-
 p.center {
 	text-align: center;
 }
-
 .overlay {
 	width: 100%;
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
-	display: none;
+    display: none;
+    z-index: 200;
 }
-
+#action-sidebar {
+    cursor: pointer;
+}
 .overlay-white {
     background: rgba(255,255,255,0.5);
 }
-
 li {
     cursor: pointer;
 }
-
 .overlay-black {
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.92);
 }
-
+.alignTopLeft{
+    margin-top: 1pc;
+    margin-left: -10px;
+}
+ ul {
+     .item {
+        border-bottom: 1px solid #c7c7c7;
+     }
+ }
 .row {
     h1,h2,h3,h4,h5{
         margin: 0 !important;
     }
+}
+
+.float-left {
+    position: absolute;
+    left: 1pc;
+    top: 1pc;
+}
+.top {
+    top: 0 !important;
+}
+#action-sidebar .btn {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 16pt;
+    color: #777;
+    position: absolute;
+    cursor: pointer;
+}
+
+.btn {
+    display: inline;
+    position: relative;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.btn_icon {
+    padding-left: 30px;
+    i {
+        position: absolute;
+        left: 5px;
+    }
+}
+p.description {
+    font-size: 10pt;
+    color: #777;
+}
+#ul-activities {
+    width: 236px !important;
+    left: 1126px !important;
+}
+
+.minSidebar {
+    bottom: 0 !important;
+    height: 51px;
+    top: 91% !important;
+    width: 37%;
+    transition: all 1.2s ease;
 }

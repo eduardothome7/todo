@@ -15,11 +15,19 @@ class Task < ApplicationRecord
   scope :finished, -> { where(status_id: FINISHED) }
 
   def started?
-    return true if status_id == PLAY
+    return true if status_id == STARTED 
+  end
+  
+  def played?
+    return true if status_id == STARTED || status_id == PLAY  
   end
 
   def pause?
     return true if status_id == PAUSE
+  end
+
+  def finished? 
+    return true if status_id == FINISHED
   end
 
   def play_pause!

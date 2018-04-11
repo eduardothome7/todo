@@ -30,10 +30,10 @@ class TasksController < ApplicationController
   def play_pause
     @task = Task.find(params[:task_id])
     
-    if @task.started?
-      new_status = 3
-    else
+    if @task.pause?
       new_status = 2
+    else
+      new_status = 3
     end
 
     if @task.play_pause!
@@ -42,9 +42,13 @@ class TasksController < ApplicationController
     else
       @msg = "Erro"
     end
-    respond_to do |format|
-      format.js 
-    end
+    
+    render json: {
+      status: 200,
+      message: @msg,
+      new_status: new_status
+    }.to_json
+
   end
 
   # GET /tasks/1/edit

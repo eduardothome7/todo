@@ -13,12 +13,7 @@
 
   <div class="input-field ">
     <%= form.label "título *" %>
-    <%= form.text_field :title, id: :task_title %>
-  </div>
-
-  <div class="input-field ">
-    <%= form.collection_select(:status_id, Status.all, :id, :name) %>
-    <%= form.label "status *" %>
+    <%= form.text_field :title, id: :task_title, placeholder: "Nova Tarefa ##{Task.last.id + 1}" %>
   </div>
 
   <div class="input-field ">
@@ -32,11 +27,6 @@
   </div>
 
   <div class="input-field ">
-    <%= form.label "descrição" %>
-    <%= form.text_area :description, id: :task_description %>
-  </div>
-
-  <div class="input-field ">
     <%= form.label "início em" %>
     <%= form.text_field :start_at, id: :task_start_at, class: 'datepicker' %>
   </div>
@@ -47,13 +37,26 @@
   </div>
 
   <div class="input-field ">
-    <%= form.label "estimativa (minutos)" %>
-    <%= form.number_field :effort_min, id: :task_effort_min %>
+    <div class="row">
+      <div class="col m6">
+        <%= form.label "estimativa (minutos)" %>
+        <%= form.number_field :effort_min, id: :task_effort_min %>
+      </div>
+      <div class="col m6">
+        <%= form.collection_select(:status_id, Status.all, :id, :name) %>
+        <%= form.label "status *" %>
+      </div>
+    </div>
   </div>
 
-  <div class="input-field ">
+  <%# <div class="input-field ">
     <%= form.label "prioridade" %>
-    <%= form.number_field :priority, id: :task_priority, value: '5' %>
+    <%# <%= form.number_field :priority, id: :task_priority, value: '5' %> 
+  <%# </div> %>
+
+  <div class="input-field ">
+    <%= form.text_area :description, id: :task_description, class: 'materialize-textarea' %>
+    <%= form.label "descrição" %>
   </div>
 
   <div class="input-field ">

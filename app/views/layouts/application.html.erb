@@ -3,6 +3,8 @@
   <head>
     <title>Tasks</title>
     <%= csrf_meta_tags %>
+      <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -10,7 +12,19 @@
 
   <body>
     <%= csrf_meta_tag %>
-  	<div class="container">
+      <!-- Dropdown Structure -->
+      <ul id="activities-ul" class="dropdown-content container">
+        <li><a href="#!">Nenhuma notificação pendente</a></li>
+      </ul>
+      <nav class="red darken-1">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Logo</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="dropdown-trigger" href="#!" data-target="activities-ul"><i class="material-icons">notifications</i><i class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+      </nav>
+  	<div class="container fluid">
     	<%= yield %>
 	</div>
   </body>

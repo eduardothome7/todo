@@ -1,24 +1,23 @@
-<h4><%= task.title.titleize %></h4>
-
-<div class="row">
-  <div class="col m2">
+<div class="row alignTopLeft">
+  <div class="col m4">
     <% if task.started? || task.pause? %>  
-      <a data-task_id="<%= task.id %>" class="btn teal play_pause">Play</a>
+      <a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn btn_icon teal play_pause"><i class="inline-icon material-icons">play_circle_outline</i><span><%= min_format(task.total_minutes) %></span></a>
     <% else %>
-      <a data-task_id="<%= task.id %>" class="btn blue play_pause">Pause</a>
+      <a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn btn_icon blue play_pause"><i class="inline-icon material-icons">pause_circle_outline</i><span><%= min_format(task.total_minutes) %></span></a>
     <% end %>
   </div>
   <div class="col m4">
     <a class="btn blue">Entregar e transferir</a>
   </div>
-  <div class="col m3">  
+  <div class="col m2">  
     <a class="btn blue">Editar</a>
   </div>
-  <div class="col m3">
+  <div class="col m2">
     <a class="btn red">Apagar</a>
   </div>
 </div>  
 
+<h4><%= task.title %></h4>
 <!-- <p>
   <strong>Aberta por</strong>
   <%= task.open_user_id %>
@@ -29,49 +28,42 @@
   <%= task.user_id %>
 </p> -->
 
-<p>
-  <%= task.status.name %>
-</p>
-
-<p>
+<p class="description">
   <%= task.project.client.name %> > <%= task.project.name %>
 </p>
 
-<p>
+<p class="description">
   <%= task.category.name %>
 </p>
 
 <% if task.start_at.present? %>
-  <p>
+  <p class="description">
     <strong>Início em: </strong>
     <%= task.start_at.strftime("%d/%m/%y as %H:%M") %>
   </p>
 <% end %>
 <% if task.conclusion_at.present? %>
-  <p>
+  <p class="description">
     <strong>Conclusão prevista: </strong>
     <%= task.conclusion_at.strftime("%d/%m/%y as %H:%M") %>
   </p>
 <% end %>
-
-<% if task.status_id == 4%>
-  <p>
+<% if task.finished? %>
+  <p class="description">
    <strong>Entregue em: </strong>
     <%= task.finish_at.strftime("%d/%m/%y as %H:%M") %>
   </p>
 <% end %>
-
-<p>
+<p class="description">
  <strong>Esforço Estimado</strong>
   <%= task.effort_min %> <small>min.</small>
 </p>
-
-<p>
+<p class="description">
  <strong>Tempo trabalhado</strong>
   <%= task.total_minutes %> <small>min.</small>
 </p>
-
-<p>
-  <%= task.description %>
-</p>
-
+<% if task.description.present? %>
+  <p class="description">
+    <%= task.description %>
+  </p>
+<% end %>
