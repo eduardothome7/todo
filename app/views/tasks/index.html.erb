@@ -1,54 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <h3>Tarefas</h3> -->
-<div id="main-overlay" class="overlay overlay-black"></div>
-
-<%= link_to 'Nova Tarefa','', id: 'openTaskForm', class: 'btn blue waves-effect' %>
-
-<!--<div class="row">
-  <div class="input-field col m1">
-    <label>3 tarefas</label>
+<div class="row">
+  <div class="col m6">
+    <p>4 tarefas abertas</p>
   </div>
-  <div class="input-field col m3">
-    <select>
-      <% Status.all.each do |status| %>
-        <option value="<%= status.id %>"><%= status.name %></option>
-      <% end %>
+  <div class="col m2">
+    <select id="searchCategoryTask">
+      <option value="1">Iniciadas</option>
+      <option value="2">Abertas</option>
+      <option value="3">Encerradas</option>
     </select>
-  </div>
-</div> -->
-
-<ul>
-  <% @tasks.each do |task| %>
-    <li class="item li_sidebar_trigger" data-task_id="<%= task.id %>">
-      <p><strong><%= task.title %></strong></p>
-      <p class="description"><%= task.project.client.name %> > <%= task.project.name %></p>
-      <p class="description"><%= task.status.name %></p>
-    </li>
-  <% end %>
-</ul>    
-
-<div class="sidebar sidebar-right <% if @task_playing.present? %> top<% end %>">
-  <div class="float-left">
-    <div id="action-sidebar">
-      <% if @task_playing.present? %>
-        <a class="minSidebar"><i class="material-icons">remove_circle_outline</i></a>
-      <% else %>
-        <a class="closeSidebar"><i class="material-icons">close</i></a>
-      <% end %>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="overlay overlay-white"></div>
-    <div id="task_selected">
-      <% if @task_playing.present? %>
-        <script>
-          $('#main-overlay').show();
-        </script>   
-        <%= render("tasks/task", task: @task_playing) %>
-      <% end %>
-    </div>    
+  </div>   
+  <div class="col m2" style="margin-top: 9px;">
+    <%= link_to "Abrir Tarefa", new_task_path, class: 'btn blue waves-effect' %>
   </div>
 </div>
 
-
+<% if @tasks.any? %>
+  <ul class="collection">
+    <% @tasks.each do |task| %>
+      <%= render 'tasks/task_list', task: task %>
+    <% end %>
+  </ul>
+<% else %>
+    <p>Nenhuma tarefa iniciada.</p>
+<% end %>

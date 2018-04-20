@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="input-field ">
-    <%= form.label "título *" %>
-    <%= form.text_field :title, id: :task_title, placeholder: "Nova Tarefa ##{Task.last.id + 1}" %>
+    <%= form.label "título *" %>  
+    <%= form.text_field :title, id: :task_title, placeholder: "Nova Tarefa ##{Task.count + 1}" %>
   </div>
 
   <div class="input-field ">
