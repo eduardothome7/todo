@@ -16,6 +16,7 @@ $(document).ready(function(){
     		'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
  		}
 	});
+	
 
 	$('.li_sidebar_trigger').click(function(){
 

@@ -1,10 +1,14 @@
 require 'date'
+require 'bigdecimal'
+require 'bigdecimal/util'
 
 class Task < ApplicationRecord
   belongs_to :project
   belongs_to :status
   belongs_to :category
   has_many :activity_tasks
+  validates :title, presence: true
+  validates :effort_min, presence: true
   STARTED   = 1
   PLAY      = 2
   PAUSE     = 3

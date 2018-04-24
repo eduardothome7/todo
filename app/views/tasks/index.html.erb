@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col m6">
+  <div class="col m8 s12">
     <p>4 tarefas abertas</p>
   </div>
-  <div class="col m2">
+  <div class="col m2 s12">
     <select id="searchCategoryTask">
       <option value="1">Iniciadas</option>
       <option value="2">Abertas</option>
       <option value="3">Encerradas</option>
     </select>
   </div>   
-  <div class="col m2" style="margin-top: 9px;">
-    <%= link_to "Abrir Tarefa", new_task_path, class: 'btn blue waves-effect' %>
+  <div class="col m2 s12" style="margin-top: 9px;">
+    <%= link_to "Abrir Tarefa", new_task_path, class: 'btn block primary waves-effect' %>
   </div>
 </div>
 
