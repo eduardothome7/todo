@@ -17,7 +17,7 @@
 </div>
 
 <% if @tasks.any? %>
-  <ul class="collection">
+  <ul class="collapsible">
     <% @tasks.each do |task| %>
       <%= render 'tasks/task_list', task: task %>
     <% end %>

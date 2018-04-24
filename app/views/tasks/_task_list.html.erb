@@ -1,7 +1,11 @@
-<li class="collection-item">
-  <h5><%= link_to task.title, task %></h5>
-  <p class="description"><%= task.project.client.name %> > <%= task.project.name %></p>
-  <div class="progress">
-    <div class="determinate" style="width: <%= percent(task.total_minutes, task.effort_min) %>%"></div>
-  </div>
+<li>
+	<div class="collapsible-header"><%= link_to task.title, task %></div>
+  	<div class="collapsible-body">
+  		<span>
+  			<%= task.project.client.name %> > <%= task.project.name %>
+  			<div class="progress">
+    			<div class="determinate" style="width: <%= percent(task.total_minutes, task.effort_min) %>%"></div>
+			</div>
+		</span>
+ 	</div>
 </li>

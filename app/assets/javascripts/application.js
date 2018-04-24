@@ -17,7 +17,8 @@ $(document).ready(function(){
  		}
 	});
 	
-
+	$('.collapsible').collapsible();
+	
 	$('.li_sidebar_trigger').click(function(){
 
 		var task_id = $(this).data('task_id');
