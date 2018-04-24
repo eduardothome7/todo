@@ -1,4 +1,4 @@
-<%= form_with(model: task, local: true) do |form| %>
+<%= form_with(model: task, local: false) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -17,12 +17,12 @@
   </div>
 
   <div class="input-field ">
-    <%= form.collection_select(:project_id, Project.all, :id, :name) %>
+    <%= form.collection_select(:project_id, Project.all, :id, :name, required: true) %>
     <%= form.label "cliente > projeto *" %>
   </div>
 
   <div class="input-field ">
-    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, required: true) %>
     <%= form.label "categoria *" %>
   </div>
 
@@ -39,8 +39,8 @@
   <div class="input-field ">
     <div class="row">
       <div class="col m6">
-        <%= form.label "estimativa (minutos)" %>
-        <%= form.number_field :effort_min, id: :task_effort_min %>
+        <%= form.label "estimativa (minutos) *" %>
+        <%= form.number_field :effort_min, id: :task_effort_min, required: true %>
       </div>
       <div class="col m6">
         <%= form.collection_select(:status_id, Status.all, :id, :name) %>

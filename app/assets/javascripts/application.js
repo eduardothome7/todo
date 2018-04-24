@@ -8,7 +8,9 @@ $(document).ready(function(){
 	var play  = 2;
 	var pause = 3;
 
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({
+		 format:"dd/mm/yyyy"
+	});
 	$('select').formSelect();
 
 	$.ajaxSetup({
@@ -17,6 +19,10 @@ $(document).ready(function(){
  		}
 	});
 	
+	$('.modal').modal({
+		dismissible: false
+	});
+
 	$('.collapsible').collapsible();
 	
 	$('.li_sidebar_trigger').click(function(){

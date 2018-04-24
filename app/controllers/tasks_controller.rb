@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  require 'date'
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, except: [:create, :update, :destroy]
 
@@ -8,6 +9,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @task_playing = @tasks.played.last
     @task_paused  = @tasks.paused.last
+    today = Date.today.strftime("%d/%m/%y")
+    tomorrow_date = Date.today + 1.day
+    tomorrow = tomorrow_date.strftime("%d/%m/%y")
+    @task = Task.new(effort_min: 480, start_at: today, conclusion_at: tomorrow)
   end
 
   # GET /tasks/1
@@ -24,7 +29,10 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    today = Date.today.strftime("%d/%m/%y")
+    tomorrow_date = Date.today + 1.day
+    tomorrow = tomorrow_date.strftime("%d/%m/%y")
+    @task = Task.new(effort_min: 480, start_at: today, conclusion_at: tomorrow)
   end
 
   def play_pause
@@ -64,6 +72,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }

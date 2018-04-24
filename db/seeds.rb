@@ -11,12 +11,14 @@ Status.create(name:'Iniciada')
 Status.create(name:'Pausada')
 Status.create(name:'Encerrada')
 
-@company = Company.create(name: 'Tasks')
+@company = Company.create(name: 'Eduardo LTDA.')
 @company.save!
-@client = Client.create(name: 'Interno', company_id: @company.id)
+@client = Client.create(name: 'Principal', company_id: @company.id)
 @client.save!
-Project.create(name:'Tasks - Eduardo', client_id: @client.id)
+Project.create(name:'Tasks - Ruby on Rails', client_id: @client.id)
+Project.create(name:'Tasks - Atom', client_id: @client.id)
+Project.create(name:'Gestão Imóvel - asp.NET', client_id: @client.id)
 
-# Category.create(name: 'Simples', hour_value: 40.0)
-# Category.create(name: 'Média', hour_value: 80.0)
-# Category.create(name: 'Complexa', hour_value: 120.0)
+Category.create(name: 'Simples', hour_value: 40.0)
+Category.create(name: 'Média', hour_value: 80.0)
+Category.create(name: 'Complexa', hour_value: 120.0)

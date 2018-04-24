@@ -12,16 +12,25 @@
     </select>
   </div>   
   <div class="col m2 s12" style="margin-top: 9px;">
-    <%= link_to "Abrir Tarefa", new_task_path, class: 'btn block primary waves-effect' %>
+    <a class="waves-effect waves-light btn modal-trigger" href="#form_task">Abrir Tarefa</a>
   </div>
 </div>
 
 <% if @tasks.any? %>
-  <ul class="collapsible">
-    <% @tasks.each do |task| %>
-      <%= render 'tasks/task_list', task: task %>
-    <% end %>
+  <ul class="collapsible" id="task_list">
+    <%= render 'tasks/index', tasks: @tasks %>
   </ul>
 <% else %>
     <p>Nenhuma tarefa iniciada.</p>
 <% end %>
+
+<!-- Modal Structure -->
+  <div id="form_task" class="modal">
+    <div class="modal-content">
+      <h4>Abrir nova tarefa</h4>
+      <%= render 'tasks/form', task: @task %>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+  </div>
