@@ -12,37 +12,51 @@
   <% end %>
 
   <div class="input-field ">
-    <%= form.label "título *" %>  
-    <%= form.text_field :title, id: :task_title, placeholder: "Nova Tarefa ##{Task.count + 1}", required: true %>
+    <%= form.text_field :title, id: :task_title, placeholder: "Nova Tarefa ##{Task.count + 1} *", required: true %>
   </div>
 
-  <div class="input-field ">
-    <%= form.collection_select(:project_id, Project.all, :id, :name, required: true) %>
-    <%= form.label "cliente > projeto *" %>
+  <div class="row">
+    <div class="col m6">
+      <div class="input-field">
+        <%= form.collection_select(:project_id, Project.all, :id, :name, required: true) %>
+        <%= form.label "cliente > projeto *" %>
+      </div>
+    </div>
+
+    <div class="col m6">
+      <div class="input-field">
+        <%= form.collection_select(:category_id, Category.all, :id, :name, required: true) %>
+        <%= form.label "categoria *" %>
+      </div> 
+    </div> 
   </div>
 
-  <div class="input-field ">
-    <%= form.collection_select(:category_id, Category.all, :id, :name, required: true) %>
-    <%= form.label "categoria *" %>
+  <div class="row">
+    <div class="col m6">
+      <div class="input-field ">
+        <i class="fa fa-calendar-o"></i>
+        <%= form.label "início em" %>
+        <%= form.text_field :start_at, id: :task_start_at, class: 'datepicker' %>
+      </div>
+    </div>
+    <div class="col m6">
+      <div class="input-field ">
+        <i class="fa fa-calendar-check-o"></i>
+        <%= form.label "entrega em" %>
+        <%= form.text_field :conclusion_at, id: :task_conclusion_at, class: 'datepicker' %>
+      </div>
+    </div>
   </div>
 
-  <div class="input-field ">
-    <%= form.label "início em" %>
-    <%= form.text_field :start_at, id: :task_start_at, class: 'datepicker' %>
-  </div>
-
-  <div class="input-field ">
-    <%= form.label "entrega em" %>
-    <%= form.text_field :conclusion_at, id: :task_conclusion_at, class: 'datepicker' %>
-  </div>
-
-  <div class="input-field ">
-    <div class="row">
-      <div class="col m6">
+  <div class="row">
+    <div class="col m6">
+      <div class="input-field ">
         <%= form.label "estimativa (minutos) *" %>
         <%= form.number_field :effort_min, id: :task_effort_min, required: true %>
       </div>
-      <div class="col m6">
+    </div>  
+    <div class="col m6">
+      <div class="input-field ">
         <%= form.collection_select(:status_id, Status.all, :id, :name) %>
         <%= form.label "status *" %>
       </div>
@@ -59,7 +73,11 @@
     <%= form.label "descrição" %>
   </div>
 
-  <div class="input-field ">
-    <%= form.submit "Abrir Tarefa", class: 'btn teal' %>
-  </div>
+  <div class="row">
+    <div class="col m10"></div>
+    <div class="col m2">
+      <div class="input-field ">
+        <%= form.submit "Abrir Tarefa", class: 'btn btn-block teal' %>
+      </div>
+    </div>
 <% end %>

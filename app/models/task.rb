@@ -22,6 +22,10 @@ class Task < ApplicationRecord
     return true if status_id == STARTED 
   end
   
+  def client_project 
+    return "#{ project.client.name } > #{ project.name }"
+  end
+
   def played?
     return true if status_id == STARTED || status_id == PLAY  
   end

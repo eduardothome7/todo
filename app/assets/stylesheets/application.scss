@@ -3,11 +3,35 @@
 @import 'materialize';
 @import 'core/main';
 
-.modal { width: 75% !important ; height: 75% !important ; } 
 .primary {
     background: $primary-color;
 }
+.btn {
+	text-transform: capitalize !important;
+}
 a:hover{
-    text-decoration: underline;
     transition: 1s ease all;
+}
+form .row {
+	margin-bottom: 0;
+	.col {
+		padding: 0 !important;
+	}
+}
+.modal {
+	z-index: 1008 !important;
+}
+.modalLg {
+    width: 79% !important;
+    height: 95% !important;
+    padding: 2pc;
+    padding: 2.5pc !important;
+    top: 12px !important;
+    max-height: 97%; 
+}
+.modal-overlay {
+	z-index: 1007 !important;
+}
+.btn-block {
+	width: 100%;
 }

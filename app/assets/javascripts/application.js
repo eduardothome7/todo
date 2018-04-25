@@ -3,14 +3,17 @@
 //= require materialize
 //= require_tree .
 
-$(document).ready(function(){
-
+function loadLib(){
+	
 	var play  = 2;
 	var pause = 3;
 
+	console.log('reload');
+
 	$('.datepicker').datepicker({
-		 format:"dd/mm/yyyy"
+		format:"dd/mm/yyyy"
 	});
+
 	$('select').formSelect();
 
 	$.ajaxSetup({
@@ -24,7 +27,7 @@ $(document).ready(function(){
 	});
 
 	$('.collapsible').collapsible();
-	
+
 	$('.li_sidebar_trigger').click(function(){
 
 		var task_id = $(this).data('task_id');
@@ -98,4 +101,8 @@ $(document).ready(function(){
 		$('.sidebar').addClass('minSidebar');
 		$('.overlay').fadeOut();
 	});
+}
+
+$(document).ready(function(){
+	loadLib();
 });

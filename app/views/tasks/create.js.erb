@@ -1,1 +1,3 @@
-$('.modal').closeModal({ dismissible: true});
+$('.modal').modal('close');
+$('#task_list').html("<%= escape_javascript(render 'tasks/index', tasks: @tasks) %>"); 
+loadLib();

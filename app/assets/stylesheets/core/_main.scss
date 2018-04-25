@@ -37,20 +37,14 @@ p.description {
     background: #f7f7f7;
     height: 1pc;
 }
-.collection-item {
-    padding: 3px 15px 15px !important;
-    h4 {
-        font-size: 18pt
-    }
-    p {
-        display: none;
-    }
-    .progress {
-        display: none;
+.collapsible {
+    a {
+        color: #333;
     }
 }
-.collection-item:first-of-type {
-    p, .progress {
-        display: block;
-    }
+.input-field {
+    position: relative;
+}
+.datepicker {
+    padding-left: 34px !important;
 }
