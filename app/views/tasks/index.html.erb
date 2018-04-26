@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col m8 s12">
-    <p>4 tarefas abertas</p>
+    <p><text id="task_count"><%= countTasks(@tasks.count) %></text></p>
   </div>
   <div class="col m2 s12">
     <select id="searchCategoryTask">

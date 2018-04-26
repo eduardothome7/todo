@@ -3,6 +3,17 @@
 //= require materialize
 //= require_tree .
 
+function setTasksCount(value){
+	if(value > 1){
+		msg = value + " tarefas abertas";
+	}else if(value == 1) {
+		msg = value + " tarefa aberta";
+	} else {
+		msg = "nenhuma tarefa aberta";
+	}
+	$('#task_count').html(msg);
+}
+
 function loadLib(){
 	
 	var play  = 2;
@@ -55,7 +66,7 @@ function loadLib(){
 			method: "put",
 			success: function(data) { 
 				validate = true;
-				status  = data.new_status;
+				// status  = data.new_status;
 				message = data.message;
 			}, 
 			error: function(message){
@@ -65,7 +76,20 @@ function loadLib(){
 		 
 		if(validate) {
 			// Materialize.toast(message, 4000); 
-			togglePlayPause($(this), status);
+			// togglePlayPause($(this), status);
+
+			$.ajax({
+				url: "/tasks/reload.js",
+				dataType: "script",
+				method: "get",
+				success: function(){
+					console.log("Ok2");
+				},
+				error: function(){
+					alert("Erro ao recarregar lista");
+				}
+			});
+
 		} else {
 			// Materialize.toast(message, 4000); 
 		}

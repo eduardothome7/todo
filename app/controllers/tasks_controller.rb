@@ -6,9 +6,14 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-    @task_playing = @tasks.played.last
-    @task_paused  = @tasks.paused.last
+    
+    if !params[:status_id].present?
+      params[:status_id] = 3
+    end
+
+    @tasks = Task.filter(:params['status_id'])
+    # @task_playing = @tasks.played.last
+    # @task_paused  = @tasks.paused.last
     today = Date.today.strftime("%d/%m/%y")
     tomorrow_date = Date.today + 1.day
     tomorrow = tomorrow_date.strftime("%d/%m/%y")
@@ -78,6 +83,13 @@ class TasksController < ApplicationController
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def reload
+    @tasks = Task.all.order("status_id = 2 DESC")
+    respond_to do |format| 
+      format.js 
     end
   end
 

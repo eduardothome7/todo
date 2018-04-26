@@ -1,18 +1,22 @@
 <li class="active">
 	<div class="collapsible-header row ln">
-		<div class="col m2">
+		<div class="col m3">
 			<%= link_to task.title, task %>
 		</div>
 		<div class="col m3">
-			<p class="info"><%= task.client_project %></p>
+			<%= task.client_project %>
 		</div>
-		<div class="col m6">
+		<div class="col m2">
+			
+		</div>
+		<div class="col m4">
 			<%= render 'tasks/play_pause', task:task %>
 		</div>
 	</div>
   	<div class="collapsible-body">
   		<span>
-  			<%= render 'tasks/progress_bar', task: task %>
+  		   	<%= render 'tasks/progress_bar', task: task %>
 		</span>
+		<%= render 'tasks/info', task: task %>
  	</div>
 </li>

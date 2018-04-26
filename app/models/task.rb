@@ -23,15 +23,19 @@ class Task < ApplicationRecord
   end
 
   def icon
-    if task.started? || task.pause?   
+    if started? || pause?   
       return "play_circle_outline"
     else 
       return "pause_circle_outline"
     end 
   end 
 
+  def self.filter(status_id)
+    where("status_id = ?", status_id)
+  end
+
   def a_class
-    if task.started? || task.pause?   
+    if started? || pause?   
       return "teal"
     else 
       return "blue"
@@ -68,9 +72,17 @@ class Task < ApplicationRecord
     return activity
   end
 
-  def start_at 
-    if activity_tasks.any?
-      return activity_tasks.played.first.created_at
+  def start_class 
+    if status_id == PLAY || status_id == FINISHED || status_id == PAUSE   
+      return "success" 
+    end
+  end
+
+  def end_class 
+    if Datetime.now > conclusion_at   
+      return "danger"
+    elsif status_id == FINISHED
+      return "success" 
     end
   end
 

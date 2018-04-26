@@ -1,3 +1,15 @@
 <div class="progress">
     <div class="determinate" style="width: <%= percent(task.total_minutes, task.effort_min) %>%"></div>
 </div>
+<div class="row">
+    <div class="col m1 center <%= task.start_class %>">
+    	<i class="material-icons">event</i><br>
+    	<%= format_date(task.start_at) %>
+    </div>
+    <div class="col m10"></div>
+    <div class="col m1 center task.end_class">
+    	<i class="material-icons"><%= icon_end(task) %></i><br>
+    	<%= format_date(task.conclusion_at) %>
+    </div>
+</div>
+<p>Tempo trabalhado: <%= to_hours(task.total_minutes) %> h.</p>

@@ -1,4 +1,5 @@
-$('.modal').modal('close');
+$('#task_list').fadeOut();
 $('#task_list').html("<%= escape_javascript(render 'tasks/index', tasks: @tasks) %>"); 
 loadLib();
 setTasksCount("<%= @tasks.count %>");
+$('#task_list').fadeIn();

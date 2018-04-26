@@ -50,4 +50,17 @@ form .row {
     margin-left: 0 !important; 
     margin-right: 0 !important; 
     margin-bottom: 0 !important; 
+
+    p {
+        padding: 0 !important;
+    }
+}
+.center {
+    text-align: center;
+}
+.success {
+    color: $success;
+}
+.danger {
+    color: $danger;   
 }
