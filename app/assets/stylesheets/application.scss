@@ -9,6 +9,17 @@
 .btn {
 	text-transform: capitalize !important;
 }
+.btn_span {
+    color: #fff !important;
+    position: relative;
+    padding-left: 9px;
+    padding-right: 54px;
+    span {
+        position: absolute;
+        top: 0px;
+        left: 43px;
+    }
+}
 a:hover{
     transition: 1s ease all;
 }
@@ -34,4 +45,9 @@ form .row {
 }
 .btn-block {
 	width: 100%;
+}
+.ln {
+    margin-left: 0 !important; 
+    margin-right: 0 !important; 
+    margin-bottom: 0 !important; 
 }

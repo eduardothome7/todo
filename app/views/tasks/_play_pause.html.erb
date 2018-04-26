@@ -1,0 +1,6 @@
+<a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn white end_task">
+	Transferir/Entregar
+</a>		
+<a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn btn_span <%= task.a_class %> play_pause">
+	<i class="inline-icon material-icons"><%= task.icon %></i><span><%= min_format(task.total_minutes) %></span>
+</a>		

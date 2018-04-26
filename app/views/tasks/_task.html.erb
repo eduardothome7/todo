@@ -1,10 +1,5 @@
 <div class="row alignTopLeft">
   <div class="col m4">
-    <% if task.started? || task.pause? %>  
-      <a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn btn_icon teal play_pause"><i class="inline-icon material-icons">play_circle_outline</i><span><%= min_format(task.total_minutes) %></span></a>
-    <% else %>
-      <a data-status="<%= task.status_id %>" data-task_id="<%= task.id %>" class="btn btn_icon blue play_pause"><i class="inline-icon material-icons">pause_circle_outline</i><span><%= min_format(task.total_minutes) %></span></a>
-    <% end %>
   </div>
   <div class="col m4">
     <a class="btn blue">Entregar e transferir</a>

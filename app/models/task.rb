@@ -21,6 +21,22 @@ class Task < ApplicationRecord
   def started?
     return true if status_id == STARTED 
   end
+
+  def icon
+    if task.started? || task.pause?   
+      return "play_circle_outline"
+    else 
+      return "pause_circle_outline"
+    end 
+  end 
+
+  def a_class
+    if task.started? || task.pause?   
+      return "teal"
+    else 
+      return "blue"
+    end 
+  end 
   
   def client_project 
     return "#{ project.client.name } > #{ project.name }"
@@ -67,9 +83,13 @@ class Task < ApplicationRecord
       
       if activity.status_id == PAUSE
         prev = get_prev_play(activity)
-        time_diff   = activity.created_at - prev.created_at
-        range       = (time_diff / 1.minute).round
-        mins        = mins + range
+        if prev
+          time_diff   = activity.created_at - prev.created_at
+          range       = (time_diff / 1.minute).round
+          mins        = mins + range
+        else 
+          mins  = mins
+        end
       end       
       
     end
